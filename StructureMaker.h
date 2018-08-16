@@ -1,5 +1,7 @@
 //File structure maker
 
+using namespace std;
+
 #ifndef STRUCTUREMAKER_H
 #define STRUCTUDEMAKER_H
 
@@ -11,10 +13,13 @@ public:
 	StructureMaker();
 	void setTemplateMaster(TemplateMaster* tm);
 	void makeFolderStructure();
+	void makeMainHtml();
+	void makeTabStrip();
 	void arrangeFilesToFolders();
 	void runMainHTML();
 private:
-	TemplateMaster* tm;
+	string outdir;
+	TemplateMaster* mTm;
 };
 
 #endif
