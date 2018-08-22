@@ -6,6 +6,20 @@
 
 using namespace std;
 
+static std::string IntToStr2(int a)
+{
+	stringstream ss;
+	ss<<a;
+	return ss.str();
+}
+
+static std::string extendDateByCntV2(int cnt,int month,int year)
+{
+	int months = year*12+month;
+	months-=cnt;
+	return IntToStr2(months / 12) + "-" + IntToStr2(months%12);
+}
+
 class HTMLTemplate
 {
 public:
@@ -24,6 +38,7 @@ public:
 	virtual void process(){};
 	virtual std::string getData(){return "";};
 	unsigned int mCnt;
+	string prefix;
 	std::string mYear,mMonth,mStation_index;
 };
 

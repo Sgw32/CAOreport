@@ -15,4 +15,8 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <xstring>
+#include <map>
+#include <utility>
+#include <iomanip>
 // TODO: reference additional headers your program requires here

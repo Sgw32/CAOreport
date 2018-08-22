@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CAOReport_2008", "CAOReport_2008.vcproj", "{EEDA5EAB-089F-4F76-9AD3-56A88AD15D78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEDA5EAB-089F-4F76-9AD3-56A88AD15D78}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EEDA5EAB-089F-4F76-9AD3-56A88AD15D78}.Debug|Win32.Build.0 = Debug|Win32
+		{EEDA5EAB-089F-4F76-9AD3-56A88AD15D78}.Release|Win32.ActiveCfg = Release|Win32
+		{EEDA5EAB-089F-4F76-9AD3-56A88AD15D78}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

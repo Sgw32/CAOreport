@@ -23,13 +23,18 @@ int _tmain(int argc, _TCHAR* argv[])
 	{
 		TemplateMaster* tm = new TemplateMaster();
 		StructureMaker* sm = new StructureMaker();
+		tm->setData(year,month,station_index,length);
 		tm->loadTemplates();
+		//Length - start from (month-length) to (month)
 		tm->setMainHTMLData(year,month,station_index,length);
 		tm->processData();
 		sm->setTemplateMaster(tm);
 		sm->makeFolderStructure();
 		sm->makeMainHtml();
 		sm->makeTabStrip();
+		sm->makeCharts();
+		sm->makeSheets();
+		sm->arrangeFilesToFolders();
 	}
 	system("pause");
 	return 0;

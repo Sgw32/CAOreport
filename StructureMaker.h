@@ -1,5 +1,5 @@
 //File structure maker
-
+#include "setup.h"
 using namespace std;
 
 #ifndef STRUCTUREMAKER_H
@@ -15,8 +15,11 @@ public:
 	void makeFolderStructure();
 	void makeMainHtml();
 	void makeTabStrip();
+	void makeCharts();
+	void makeSheets();
 	void arrangeFilesToFolders();
 	void runMainHTML();
+	void copyFile(string in_file, string out_file);
 private:
 	string outdir;
 	TemplateMaster* mTm;
