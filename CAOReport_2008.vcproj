@@ -187,6 +187,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MTREXPSingleton.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SheetGenerator.cpp"
 				>
 			</File>
@@ -242,6 +246,10 @@
 			</File>
 			<File
 				RelativePath=".\MainHTMLResult.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MTREXPSingleton.h"
 				>
 			</File>
 			<File

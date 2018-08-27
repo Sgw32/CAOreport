@@ -32,6 +32,8 @@ void TemplateMaster::setMainHTMLData(string year, string month,string station_in
 		}
 	}
 	mCount = atoi(count.c_str());
+	MTREXPSingleton::getInstance()->setData(year,month,station_index);
+	MTREXPSingleton::getInstance()->setMonthCount(mCount);
 }
 
 void TemplateMaster::processData()
@@ -73,23 +75,27 @@ void TemplateMaster::loadTemplates()
 			is_ok = false;
 		}
 		int times[LAUNCHES_PER_DAY] = LAUNCHES_TIMES;
-		for (int i=0;i!=LAUNCHES_PER_DAY;i++)
-		{
-			char mth[20];
-			sprintf_s(mth,"%03d",i+1);
-			ChartGenerator* sh = new ChartGenerator();
-			sh->setTime(times[i]);
-			sh->setImage("image"+string(mth)+".png");
-			sh->loadTemplate(template_name);
-			templates.push_back(sh);
-			charts.push_back(sh);
-		}
 		for (int i=0;i!=mCount;i++)
 		{
 			SheetGenerator* sh = new SheetGenerator();
 			sh->loadTemplate(template_name);
+			sh->setMonthSpan(i);
 			templates.push_back(sh);
 			sheets.push_back(sh);
+		}
+		if (mCount)
+		{
+			for (int i=0;i!=LAUNCHES_PER_DAY;i++)
+			{
+				char mth[20];
+				sprintf_s(mth,"%03d",i+1);
+				ChartGenerator* sh = new ChartGenerator();
+				sh->setTime(times[i],i);
+				sh->setImage("image"+string(mth)+".png");
+				sh->loadTemplate(template_name);
+				templates.push_back(sh);
+				charts.push_back(sh);
+			}
 		}
 	}
 }

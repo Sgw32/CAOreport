@@ -22,6 +22,14 @@ void StructureMaker::makeFolderStructure()
 	
 }
 
+void StructureMaker::copyChartJSFiles()
+{
+	copyFile(mTm->getTemplateDirectory()+"\\template_files\\Chart.bundle.js",
+		outdir+station_index+"_obfg_g.files\\Chart.bundle.js");
+	copyFile(mTm->getTemplateDirectory()+"\\template_files\\utils.js",
+		outdir+station_index+"_obfg_g.files\\utils.js");
+}
+
 void StructureMaker::arrangeFilesToFolders()
 {
 	copyFile(mTm->getTemplateDirectory()+"\\template_files\\stylesheet.css",

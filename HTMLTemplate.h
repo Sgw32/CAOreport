@@ -13,17 +13,25 @@ static std::string IntToStr2(int a)
 	return ss.str();
 }
 
+static std::string MonthToStr(int a)
+{
+	stringstream ss;
+	ss<< setfill('0') << setw(2) <<a;
+	return ss.str();
+}
+
 static std::string extendDateByCntV2(int cnt,int month,int year)
 {
 	int months = year*12+month;
 	months-=cnt;
-	return IntToStr2(months / 12) + "-" + IntToStr2(months%12);
+	//Year and month
+	return IntToStr2(months / 12) + "-" + MonthToStr(months%12);
 }
 
 class HTMLTemplate
 {
 public:
-	HTMLTemplate(){};
+	HTMLTemplate(){mCnt = 0;};
 	virtual void loadTemplate(std::string templateDir){};
 	void setData(string year, string month, string station_index)
 	{

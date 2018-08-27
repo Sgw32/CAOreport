@@ -17,6 +17,7 @@ public:
 	void makeTabStrip();
 	void makeCharts();
 	void makeSheets();
+	void copyChartJSFiles();
 	void arrangeFilesToFolders();
 	void runMainHTML();
 	void copyFile(string in_file, string out_file);

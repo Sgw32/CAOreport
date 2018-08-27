@@ -1,26 +1,11 @@
 #include "HTMLTemplate.h"
 #include "setup.h"
+#include "MTREXPSingleton.h"
 
 #ifndef SHEETGENERATOR_H
 #define SHEETGENERATOR_H
 
 using namespace std;
-
-class isodata
-{
-public:
-	isodata()
-	{
-		isobare=0;
-	};
-	vector<int> times;
-	int isobare;
-	vector<int> N;
-	vector<double> meanV;
-	vector<double> quad_err1;
-	vector<double> quad_val1;
-	vector<double> vzv_quad_val1;
-};
 
 class SheetGenerator : public HTMLTemplate
 {
@@ -37,7 +22,11 @@ public:
 	std::string processIsobareString(string isoData, isodata* iso);
 	void setIsobareMap(map<int,isodata*> isobares);
 	std::string getData();
+	void setMonthSpan(int mspan);
+	vector<isodata*> getIsobares();
 private:
+	int mMonthSpan;
+	string mStationName;
 	std::string IntToStr(int a);
 	std::string FloatToStr(double a);
 	std::string parseCommas(std::string a);

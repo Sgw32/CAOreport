@@ -6,6 +6,7 @@
 #include "TemplateMaster.h"
 #include "ConsoleParams.h"
 #include "StructureMaker.h"
+#include "MTREXPSingleton.h"
 
 string station_index;
 string year;
@@ -34,6 +35,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		sm->makeTabStrip();
 		sm->makeCharts();
 		sm->makeSheets();
+		sm->copyChartJSFiles();
 		sm->arrangeFilesToFolders();
 	}
 	system("pause");
