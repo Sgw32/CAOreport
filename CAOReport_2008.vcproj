@@ -191,6 +191,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\NearStationsSingleton.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SheetGenerator.cpp"
 				>
 			</File>
@@ -250,6 +254,10 @@
 			</File>
 			<File
 				RelativePath=".\MTREXPSingleton.h"
+				>
+			</File>
+			<File
+				RelativePath=".\NearStationsSingleton.h"
 				>
 			</File>
 			<File

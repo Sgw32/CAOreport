@@ -14,6 +14,8 @@ public:
 	void setTime(int time,int id);
 	void loadTemplate(std::string templateDir);
 	void process();
+	string getLineBackground(int i);
+	string getLineBorder(int i);
 	std::string getXLabels();
 	std::string getYData(size_t i,char iUT);
 	std::string getRaRaData(char iUT);

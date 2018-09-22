@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "SheetGenerator.h"
+#include "NearStationsSingleton.h"
 
 string months_ru[12] = {"Январь", "Февраль", "Март", "Апрель",
 "Май", "Июнь", "Июль", "Август",
@@ -108,9 +109,7 @@ void SheetGenerator::processHeader()
 		 index = mHead.find("YEAR_TEXT_NUM", index);
 	}
 
-	string month_num = "";
-	if ((atoi(mMonth.c_str()-1)>=0) && (atoi(mMonth.c_str()-1)<12))
-		month_num = months_ru[atoi(mMonth.c_str())-1];
+	string month_num = calcCurrentMonthNameRU(mMonthSpan,atoi(mMonth.c_str()),atoi(mYear.c_str()));
 	prefix = month_num;
 	index = mHead.find("MONTH_TEXT_RU");
 	while (index != std::string::npos) {
@@ -123,8 +122,90 @@ void SheetGenerator::processHeader()
 	}
 }
 
+std::string SheetGenerator::calcCurrentMonthNameRU(int cnt,int month,int year)
+{
+	int months = year*12+month;
+	months-=(mCnt-cnt-1);
+	int mf = months%12;
+	if (!mf)
+		mf=12;
+	mf-=1;
+	if ((mf>=0) && (mf<12))
+		return months_ru[mf];
+	return "";
+}
+
+void SheetGenerator::processEnding()
+{
+	int hEdata[2];
+	memcpy(hEdata,MTREXPSingleton::getInstance()->hadError,sizeof(hEdata));
+	//New new rows
+	string result = mEnding;
+	string prefix = (hEdata[0]&hEdata[1]) ? "" : FloatToStr(MTREXPSingleton::getInstance()->calcVzvSkzSloy(0));
+	size_t index = result.find("SLOY_WEIGHTED_SKZ_00");
+	while (index != std::string::npos) {
+		 /* Make the replacement. */
+		 result.replace(index, string("SLOY_WEIGHTED_SKZ_00").length(), prefix.c_str());
+		 /* Advance index forward so the next iteration doesn't pick it up as well. */
+		 index += string("SLOY_WEIGHTED_SKZ_00").length();
+		 /* Locate the substring to replace. */
+		 index = result.find("SLOY_WEIGHTED_SKZ_00", index);
+	}
+
+	prefix = (hEdata[0]&hEdata[1]) ? "" : FloatToStr(MTREXPSingleton::getInstance()->calcVzvSkzSloy(1));
+	index = result.find("SLOY_WEIGHTED_SKZ_12");
+	while (index != std::string::npos) {
+		 /* Make the replacement. */
+		 result.replace(index, string("SLOY_WEIGHTED_SKZ_12").length(), prefix.c_str());
+		 /* Advance index forward so the next iteration doesn't pick it up as well. */
+		 index += string("SLOY_WEIGHTED_SKZ_12").length();
+		 /* Locate the substring to replace. */
+		 index = result.find("SLOY_WEIGHTED_SKZ_12", index);
+	}
+
+	prefix = (hEdata[0]&hEdata[1]) ? "" : FloatToStr(MTREXPSingleton::getInstance()->calcCommonSkzSloy());
+	index = result.find("SLOY_COMMON_SKZ");
+	while (index != std::string::npos) {
+		 /* Make the replacement. */
+		 result.replace(index, string("SLOY_COMMON_SKZ").length(), prefix.c_str());
+		 /* Advance index forward so the next iteration doesn't pick it up as well. */
+		 index += string("SLOY_COMMON_SKZ").length();
+		 /* Locate the substring to replace. */
+		 index = result.find("SLOY_COMMON_SKZ", index);
+	}
+
+	prefix = (hEdata[0]&hEdata[1]) ? "" : FloatToStr(MTREXPSingleton::getInstance()->calcCommonVzvSkzSloy());
+	index = result.find("WEIGHTED_COMMON_SLOY_SKZ");
+	while (index != std::string::npos) {
+		 /* Make the replacement. */
+		 result.replace(index, string("WEIGHTED_COMMON_SLOY_SKZ").length(), prefix.c_str());
+		 /* Advance index forward so the next iteration doesn't pick it up as well. */
+		 index += string("WEIGHTED_COMMON_SLOY_SKZ").length();
+		 /* Locate the substring to replace. */
+		 index = result.find("WEIGHTED_COMMON_SLOY_SKZ", index);
+	}
+
+	for (int i=1;i!=10;i++)
+	{
+		prefix = NearStationsSingleton::getInstance()->makeAHrefRow(i-1);
+		string data = "HREF"+IntToStr(i);
+		index = result.find(data.c_str());
+		while (index != std::string::npos) {
+			 /* Make the replacement. */
+			 result.replace(index, data.length(), prefix.c_str());
+			 /* Advance index forward so the next iteration doesn't pick it up as well. */
+			 index += data.length();
+			 /* Locate the substring to replace. */
+			 index = result.find(data.c_str(), index);
+		}
+	}
+
+	mEnding = result;
+}
+
 void SheetGenerator::processRzoTypes()
 {
+
 	if (mRzoTypesStr.size()==2) //Full data set
 	{
 		//Process RZO types
@@ -151,13 +232,6 @@ void SheetGenerator::processRzoTypes()
 			 index = mEnding.find("RZO_TYPE_NUMBER2", index);
 		}
 	}
-}
-
-std::string SheetGenerator::extendDateByCnt(int cnt,int month,int year)
-{
-	int months = year*12+month;
-	months-=cnt;
-	return string("01.") + IntToStr(months%12) + "." + IntToStr(months / 12);
 }
 
 void SheetGenerator::setMonthSpan(int mspan)
@@ -216,13 +290,15 @@ std::string SheetGenerator::IntToStr(int a)
 std::string SheetGenerator::FloatToStr(double a)
 {
 	stringstream ss;
-	ss<<std::setprecision(2)<<a;
+	ss<<std::setprecision(0)<< std::fixed <<a;
 	return ss.str();
 }
 
 std::string SheetGenerator::processIsobareString(string isoData, isodata* iso)
 {
 	string result = isoData;
+	int hEdata[2];
+	memcpy(hEdata,iso->iso_hadError,sizeof(hEdata));
 	//Set isobare value
 	string prefix = IntToStr(iso->isobare);
 	size_t index = result.find("ISOBARE_VALUE");
@@ -257,7 +333,7 @@ std::string SheetGenerator::processIsobareString(string isoData, isodata* iso)
 		 index = result.find("NUM_VALUE1", index);
 	}
 	//Set MEAN_VALUE0
-	prefix = FloatToStr(iso->meanV[0]);
+	prefix = hEdata[0] ? "" : FloatToStr(iso->meanV[0]);
 	index = result.find("MEAN_VALUE0");
 	while (index != std::string::npos) {
 		 /* Make the replacement. */
@@ -268,7 +344,7 @@ std::string SheetGenerator::processIsobareString(string isoData, isodata* iso)
 		 index = result.find("MEAN_VALUE0", index);
 	}
 	//Set MEAN_VALUE1
-	prefix = FloatToStr(iso->meanV[1]);
+	prefix = hEdata[1] ? "" : FloatToStr(iso->meanV[1]);
 	index = result.find("MEAN_VALUE1");
 	while (index != std::string::npos) {
 		 /* Make the replacement. */
@@ -279,7 +355,7 @@ std::string SheetGenerator::processIsobareString(string isoData, isodata* iso)
 		 index = result.find("MEAN_VALUE1", index);
 	}
 	//Set QUADRATIC_ERROR0
-	prefix = FloatToStr(iso->quad_err1[0]);
+	prefix = hEdata[0] ? "" : FloatToStr(iso->quad_err1[0]);
 	index = result.find("QUADRATIC_ERROR0");
 	while (index != std::string::npos) {
 		 /* Make the replacement. */
@@ -290,7 +366,7 @@ std::string SheetGenerator::processIsobareString(string isoData, isodata* iso)
 		 index = result.find("QUADRATIC_ERROR0", index);
 	}
 	//Set QUADRATIC_ERROR1
-	prefix = FloatToStr(iso->quad_err1[1]);
+	prefix = hEdata[1] ? "" : FloatToStr(iso->quad_err1[1]);
 	index = result.find("QUADRATIC_ERROR1");
 	while (index != std::string::npos) {
 		 /* Make the replacement. */
@@ -301,7 +377,7 @@ std::string SheetGenerator::processIsobareString(string isoData, isodata* iso)
 		 index = result.find("QUADRATIC_ERROR1", index);
 	}
 	//Set QUADRATIC_VALUE0
-	prefix = FloatToStr(iso->quad_val1[0]);
+	prefix = hEdata[0] ? "" : FloatToStr(iso->quad_val1[0]);
 	index = result.find("QUADRATIC_VALUE0");
 	while (index != std::string::npos) {
 		 /* Make the replacement. */
@@ -312,7 +388,7 @@ std::string SheetGenerator::processIsobareString(string isoData, isodata* iso)
 		 index = result.find("QUADRATIC_VALUE0", index);
 	}
 	//Set QUADRATIC_VALUE1
-	prefix = FloatToStr(iso->quad_val1[1]);
+	prefix = hEdata[1] ? "" : FloatToStr(iso->quad_val1[1]);
 	index = result.find("QUADRATIC_VALUE1");
 	while (index != std::string::npos) {
 		 /* Make the replacement. */
@@ -323,7 +399,7 @@ std::string SheetGenerator::processIsobareString(string isoData, isodata* iso)
 		 index = result.find("QUADRATIC_VALUE1", index);
 	}
 	//Set QUADRATIC_VALUE0
-	prefix = FloatToStr(iso->vzv_quad_val1[0]);
+	prefix = hEdata[0] ? "" : FloatToStr(iso->vzv_quad_val1[0]);
 	index = result.find("WEIGHTED_VALUE0");
 	while (index != std::string::npos) {
 		 /* Make the replacement. */
@@ -334,7 +410,7 @@ std::string SheetGenerator::processIsobareString(string isoData, isodata* iso)
 		 index = result.find("WEIGHTED_VALUE0", index);
 	}
 	//Set QUADRATIC_VALUE1
-	prefix = FloatToStr(iso->vzv_quad_val1[1]);
+	prefix = hEdata[1] ? "" : FloatToStr(iso->vzv_quad_val1[1]);
 	index = result.find("WEIGHTED_VALUE1");
 	while (index != std::string::npos) {
 		 /* Make the replacement. */
@@ -344,6 +420,53 @@ std::string SheetGenerator::processIsobareString(string isoData, isodata* iso)
 		 /* Locate the substring to replace. */
 		 index = result.find("WEIGHTED_VALUE1", index);
 	}
+
+	//New template rows
+
+	prefix = IntToStr(iso->Nerr[0]);
+	index = result.find("NUM_ER_VALUE0");
+	while (index != std::string::npos) {
+		 /* Make the replacement. */
+		 result.replace(index, string("NUM_ER_VALUE0").length(), prefix.c_str());
+		 /* Advance index forward so the next iteration doesn't pick it up as well. */
+		 index += string("NUM_ER_VALUE0").length();
+		 /* Locate the substring to replace. */
+		 index = result.find("NUM_ER_VALUE0", index);
+	}
+
+	prefix = IntToStr(iso->Nerr[1]);
+	index = result.find("NUM_ER_VALUE1");
+	while (index != std::string::npos) {
+		 /* Make the replacement. */
+		 result.replace(index, string("NUM_ER_VALUE1").length(), prefix.c_str());
+		 /* Advance index forward so the next iteration doesn't pick it up as well. */
+		 index += string("NUM_ER_VALUE1").length();
+		 /* Locate the substring to replace. */
+		 index = result.find("NUM_ER_VALUE1", index);
+	}
+
+	prefix = (hEdata[0]&hEdata[1]) ? "" : FloatToStr(iso->common_quad_val1[0]);
+	index = result.find("COMMON_QUADRATIC_VALUE");
+	while (index != std::string::npos) {
+		 /* Make the replacement. */
+		 result.replace(index, string("COMMON_QUADRATIC_VALUE").length(), prefix.c_str());
+		 /* Advance index forward so the next iteration doesn't pick it up as well. */
+		 index += string("COMMON_QUADRATIC_VALUE").length();
+		 /* Locate the substring to replace. */
+		 index = result.find("COMMON_QUADRATIC_VALUE", index);
+	}
+
+	prefix = (hEdata[0]&hEdata[1]) ? "" : FloatToStr(iso->common_vzv_quad_val1[0]);
+	index = result.find("COMMON_WEIGHTED_VALUE");
+	while (index != std::string::npos) {
+		 /* Make the replacement. */
+		 result.replace(index, string("COMMON_WEIGHTED_VALUE").length(), prefix.c_str());
+		 /* Advance index forward so the next iteration doesn't pick it up as well. */
+		 index += string("COMMON_WEIGHTED_VALUE").length();
+		 /* Locate the substring to replace. */
+		 index = result.find("COMMON_WEIGHTED_VALUE", index);
+	}
+
 	return result;
 }
 
@@ -369,6 +492,7 @@ void SheetGenerator::process()
 	processHeader();
 	processIsobareTable();
 	processRzoTypes();
+	processEnding();
 }
 
 string SheetGenerator::getData()

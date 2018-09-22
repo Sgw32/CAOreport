@@ -16,8 +16,10 @@ public:
 	void generateResultTxt();
 	void readResultTxt();
 	void processIsobareTable();
+	void processEnding();
 	void processHeader();
 	void processRzoTypes();
+	std::string calcCurrentMonthNameRU(int cnt,int month, int year);
 	std::string extendDateByCnt(int cnt,int month,int year);
 	std::string processIsobareString(string isoData, isodata* iso);
 	void setIsobareMap(map<int,isodata*> isobares);

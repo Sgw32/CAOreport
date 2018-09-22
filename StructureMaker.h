@@ -20,8 +20,11 @@ public:
 	void copyChartJSFiles();
 	void arrangeFilesToFolders();
 	void runMainHTML();
+	void loadRlsPrefixes();
+	string getRlsPrefix(string d1);
 	void copyFile(string in_file, string out_file);
 private:
+	map<string,string> rls_prefs;
 	string outdir;
 	TemplateMaster* mTm;
 };

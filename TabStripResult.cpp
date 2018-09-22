@@ -44,7 +44,7 @@ void TabStripResult::process()
 		char mth[20];
 		mHead += " <td bgcolor=\"#FFFFFF\" nowrap><b><small><small>&nbsp;<a href=\"sheet";
 		sprintf_s(mth,"%03d",i);
-		string res2 = extendDateByCntV2(i-1,atoi(mMonth.c_str()),atoi(mYear.c_str()));
+		string res2 = extendDateByCntV2(mCnt-(i),atoi(mMonth.c_str()),atoi(mYear.c_str()));
 		mHead += string(mth)+".htm\" target=\"frSheet\"><font face=\"Arial\" color=\"#000000\">"+res2+"</font></a>&nbsp;</small></small></b></td>\n";
 	}
 }

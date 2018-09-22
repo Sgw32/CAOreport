@@ -14,12 +14,38 @@ void StructureMaker::setTemplateMaster(TemplateMaster* tm)
 
 void StructureMaker::makeFolderStructure()
 {
-	outdir = GetExePath()+"\\results\\" + year + "\\" + month + "\\"
-			+ station_index + "\\";
+	/*outdir = GetExePath()+"\\results\\" + year + "\\" + month + "\\"
+			+ getRlsPrefix(station_index) + "\\";
 	string res_dir = string("md "+GetExePath()+"\\results\\" + year + "\\" + month + "\\" 
-			+ station_index + "\\" + station_index + "_obfg_g.files");
+			+ getRlsPrefix(station_index) + "\\" + station_index + "_obfg_g.files");*/
+	outdir = GetExePath()+"\\results\\ae_obfg\\" 
+			+ getRlsPrefix(station_index) + "\\";
+	string res_dir = string("md "+GetExePath()+"\\results\\ae_obfg\\"  
+			+ getRlsPrefix(station_index) + "\\" + station_index + "_obfg_g.files");
 	system(res_dir.c_str());
 	
+}
+
+string StructureMaker::getRlsPrefix(string d1)
+{
+	map<string,string>::iterator it = rls_prefs.find(d1);
+	if (it!=rls_prefs.end())
+		return rls_prefs[d1];
+	else
+		return "undef";
+}
+
+void StructureMaker::loadRlsPrefixes()
+{
+	std::ifstream t("rls_prefixes.csv");
+	if (t.is_open())
+	{
+		string d1,d2;
+		while (t >> d1 >> d2) 
+		{ 
+			rls_prefs[d1]=d2;
+		}
+	}
 }
 
 void StructureMaker::copyChartJSFiles()

@@ -7,6 +7,7 @@
 #include "ConsoleParams.h"
 #include "StructureMaker.h"
 #include "MTREXPSingleton.h"
+#include "NearStationsSingleton.h"
 
 string station_index;
 string year;
@@ -22,8 +23,12 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	if (params_got == 4)
 	{
+		NearStationsSingleton::getInstance()->setStationIndex(station_index);
+		NearStationsSingleton::getInstance()->loadBaseFiles();
+		//NearStationsSingleton::getInstance()->makeAHrefRow(0);
 		TemplateMaster* tm = new TemplateMaster();
 		StructureMaker* sm = new StructureMaker();
+		sm->loadRlsPrefixes();
 		tm->setData(year,month,station_index,length);
 		tm->loadTemplates();
 		//Length - start from (month-length) to (month)

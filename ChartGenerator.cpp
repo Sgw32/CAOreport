@@ -30,7 +30,7 @@ void ChartGenerator::process()
 		 index = mHead.find("FILENAME", index);
 	}
 	stringstream a;
-	a << mTime;
+	a << setfill('0') << setw(2) << mTime;
 	prefix = a.str();
 	index = mHead.find("TIME");
 	while (index != std::string::npos) {
@@ -101,6 +101,29 @@ void ChartGenerator::process()
 			 /* Locate the substring to replace. */
 			 index = newDataset.find("VALUES_DATA", index);
 		}
+
+		prefix = getLineBackground(i);
+		index = newDataset.find("#LINE_COLOR1");
+		while (index != std::string::npos) {
+			 /* Make the replacement. */
+			 newDataset.replace(index, string("#LINE_COLOR1").size(), prefix.c_str());
+			 /* Advance index forward so the next iteration doesn't pick it up as well. */
+			 index += string("#LINE_COLOR1").size();
+			 /* Locate the substring to replace. */
+			 index = newDataset.find("#LINE_COLOR1", index);
+		}
+
+		index = newDataset.find("#LINE_COLOR2");
+		while (index != std::string::npos) {
+			 /* Make the replacement. */
+			newDataset.replace(index, string("#LINE_COLOR2").size(), prefix.c_str());
+			 /* Advance index forward so the next iteration doesn't pick it up as well. */
+			index += string("#LINE_COLOR2").size();
+			 /* Locate the substring to replace. */
+			index = newDataset.find("#LINE_COLOR2", index);
+		}
+
+
 		mHead=mHead+newDataset;
 		mHead+=",\n";
 	
@@ -131,9 +154,78 @@ void ChartGenerator::process()
 		 index = newDataset.find("VALUES_DATA", index);
 	}
 
+	//y-axis-1
+	prefix = "y-axis-2";
+	index = newDataset.find("y-axis-1");
+	while (index != std::string::npos) {
+		 /* Make the replacement. */
+		 newDataset.replace(index, string("y-axis-1").size(), prefix.c_str());
+		 /* Advance index forward so the next iteration doesn't pick it up as well. */
+		 index += string("y-axis-1").size();
+		 /* Locate the substring to replace. */
+		 index = newDataset.find("y-axis-1", index);
+	}
+
+	
+	prefix = string("#7f7f7f");
+	index = newDataset.find("#LINE_COLOR1");
+	while (index != std::string::npos) {
+		 /* Make the replacement. */
+		 newDataset.replace(index, string("#LINE_COLOR1").size(), prefix.c_str());
+		 /* Advance index forward so the next iteration doesn't pick it up as well. */
+		 index += string("#LINE_COLOR1").size();
+		 /* Locate the substring to replace. */
+		 index = newDataset.find("#LINE_COLOR1", index);
+	}
+
+	prefix = string("#7f7f7f");
+	index = newDataset.find("#LINE_COLOR2");
+	while (index != std::string::npos) {
+		 /* Make the replacement. */
+		newDataset.replace(index, string("#LINE_COLOR2").size(), prefix.c_str());
+		 /* Advance index forward so the next iteration doesn't pick it up as well. */
+		index += string("#LINE_COLOR2").size();
+		 /* Locate the substring to replace. */
+		index = newDataset.find("#LINE_COLOR2", index);
+	}
+
 	mHead=mHead+newDataset;
 
 }
+
+string ChartGenerator::getLineBackground(int i)
+{
+	string res = "";
+	switch (i)
+	{
+	case 0:
+		res = "#7f007f";
+		break;
+	case 1:
+		res = "#00ffff";
+		break;
+	case 2:
+		res = "#ff7f40";
+		break;
+	case 3:
+		res = "#ff00ff";
+		break;
+	case 4:
+		res = "#00007f";
+		break;
+	default:
+		res = "#000000";
+		break;
+	}
+	return res;
+}
+
+string ChartGenerator::getLineBorder(int i)
+{
+	string res = "#000000";
+	return res;
+}
+
 
 void ChartGenerator::setImage(string image)
 {
