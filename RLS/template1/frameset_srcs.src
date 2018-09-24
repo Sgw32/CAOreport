@@ -1,0 +1,11 @@
+
+<frameset rows="*,39" border=0 width=0 frameborder=no framespacing=0>
+ <frame src="template_menu.files/sheet001.htm" name="frSheet">
+ <frame src="template_menu.files/tabstrip.htm" name="frTabs" marginwidth=0 marginheight=0>
+ <noframes>
+  <body>
+   <p>Эта страница содержит фреймы, однако текущий браузер их не поддерживает.</p>
+  </body>
+ </noframes>
+</frameset>
+</html>

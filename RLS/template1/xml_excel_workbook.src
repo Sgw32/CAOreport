@@ -1,0 +1,39 @@
+<![endif]><!--[if gte mso 9]><xml>
+ <x:ExcelWorkbook>
+  <x:ExcelWorksheets>
+   <x:ExcelWorksheet>
+    <x:Name>Граф-00</x:Name>
+    <x:WorksheetSource HRef="template_menu.files/chart001.htm"/>
+   </x:ExcelWorksheet>
+   <x:ExcelWorksheet>
+    <x:Name>Граф-12</x:Name>
+    <x:WorksheetSource HRef="template_menu.files/chart002.htm"/>
+   </x:ExcelWorksheet>
+   <x:ExcelWorksheet>
+    <x:Name>2016-10</x:Name>
+    <x:WorksheetSource HRef="template_menu.files/sheet001.htm"/>
+   </x:ExcelWorksheet>
+   <x:ExcelWorksheet>
+    <x:Name>2016-11</x:Name>
+    <x:WorksheetSource HRef="template_menu.files/sheet002.htm"/>
+   </x:ExcelWorksheet>
+   <x:ExcelWorksheet>
+    <x:Name>2016-12</x:Name>
+    <x:WorksheetSource HRef="template_menu.files/sheet003.htm"/>
+   </x:ExcelWorksheet>
+   <x:ExcelWorksheet>
+    <x:Name>2017-01</x:Name>
+    <x:WorksheetSource HRef="template_menu.files/sheet004.htm"/>
+   </x:ExcelWorksheet>
+  </x:ExcelWorksheets>
+  <x:Stylesheet HRef="template_menu.files/stylesheet.css"/>
+  <x:WindowHeight>9108</x:WindowHeight>
+  <x:WindowWidth>22848</x:WindowWidth>
+  <x:WindowTopX>96</x:WindowTopX>
+  <x:WindowTopY>96</x:WindowTopY>
+  <x:ActiveSheet>5</x:ActiveSheet>
+  <x:ProtectStructure>False</x:ProtectStructure>
+  <x:ProtectWindows>False</x:ProtectWindows>
+ </x:ExcelWorkbook>
+</xml><![endif]-->
+</head>

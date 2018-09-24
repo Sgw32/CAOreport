@@ -1,0 +1,10 @@
+{
+	label: 'DATASET_NAME',
+	lineTension: 0,
+	backgroundColor: '#LINE_COLOR1',
+	borderColor: '#LINE_COLOR2',
+	data: [VALUES_DATA],
+	fill: false,
+	borderWidth: 1,
+	yAxisID: 'y-axis-1'
+}

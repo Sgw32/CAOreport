@@ -1,0 +1,108 @@
+<html>
+
+<head>
+<link rel=Stylesheet href=stylesheet.css>
+</head>
+
+<body link=blue vlink=purple>
+
+<table border=0 cellpadding=0 cellspacing=0 width=1133 style='border-collapse:
+ collapse;table-layout:fixed;width:851pt'>
+ <col width=119 style='mso-width-source:userset;mso-width-alt:4352;width:89pt'>
+ <col width=57 style='mso-width-source:userset;mso-width-alt:2084;width:43pt'>
+ <col width=48 style='mso-width-source:userset;mso-width-alt:1755;width:36pt'>
+ <col width=70 style='mso-width-source:userset;mso-width-alt:2560;width:53pt'>
+ <col width=54 style='mso-width-source:userset;mso-width-alt:1974;width:41pt'>
+ <col width=67 style='mso-width-source:userset;mso-width-alt:2450;width:50pt'>
+ <col width=86 style='mso-width-source:userset;mso-width-alt:3145;width:65pt'>
+ <col width=80 style='mso-width-source:userset;mso-width-alt:2925;width:60pt'>
+ <col width=51 style='mso-width-source:userset;mso-width-alt:1865;width:38pt'>
+ <col width=80 style='mso-width-source:userset;mso-width-alt:2925;width:60pt'>
+ <col width=67 style='mso-width-source:userset;mso-width-alt:2450;width:50pt'>
+ <col width=83 style='mso-width-source:userset;mso-width-alt:3035;width:62pt'>
+ <col width=71 style='mso-width-source:userset;mso-width-alt:2596;width:53pt'>
+ <col width=62 style='mso-width-source:userset;mso-width-alt:2267;width:47pt'>
+ <col width=74 style='mso-width-source:userset;mso-width-alt:2706;width:56pt'>
+ <col width=64 style='width:48pt'>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl125 colspan=9 width=632 style='height:15.75pt;
+  mso-ignore:colspan;width:475pt'>Статистика значений<span
+  style='mso-spacerun:yes'>  </span>&quot;наблюдение-минус-прогноз&quot;,
+  &quot;OB-FG&quot;. Геопотенциал.<span style='mso-spacerun:yes'> </span></td>
+  <td class=xl127 align=center width=80 style='width:60pt'>########</td>
+  <td class=xl126 width=67 style='width:50pt'></td>
+  <td class=xl128 width=83 style='width:62pt'></td>
+  <td class=xl128 width=71 style='width:53pt'></td>
+  <td width=62 style='width:47pt'></td>
+  <td width=74 style='width:56pt'></td>
+  <td width=64 style='width:48pt'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl138 style='height:15.75pt'>STATION_INDEX</td>
+  <td class=xl139 colspan=3 style='mso-ignore:colspan'>STATION_NAME</td>
+  <td class=xl140></td>
+  <td></td>
+  <td class=xl140>MONTH_TEXT_RU<span style='display:none'>XT_RU</span></td>
+  <td class=xl141 align=right>2018 г.</td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl121><a href="../../../ae_obfg.htm" target="_parent">на верхний
+  уровень</a></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl123 style='height:15.75pt'></td>
+  <td class=xl124></td>
+  <td class=xl126></td>
+  <td class=xl126></td>
+  <td class=xl126></td>
+  <td class=xl126></td>
+  <td class=xl126></td>
+  <td class=xl129></td>
+  <td class=xl122></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='mso-height-source:userset;height:13.15pt'>
+  <td height=17 class=xl142 style='height:13.15pt'>&nbsp;</td>
+  <td class=xl111 style='border-left:none'>&nbsp;</td>
+  <td class=xl112>&nbsp;</td>
+  <td class=xl112>00 ВСВ</td>
+  <td class=xl112>&nbsp;</td>
+  <td class=xl112>&nbsp;</td>
+  <td class=xl113>&nbsp;</td>
+  <td class=xl118>&nbsp;</td>
+  <td class=xl119>&nbsp;</td>
+  <td class=xl112>12 ВСВ</td>
+  <td class=xl112>&nbsp;</td>
+  <td class=xl119>&nbsp;</td>
+  <td class=xl120>&nbsp;</td>
+  <td class=xl160 colspan=2 style='mso-ignore:colspan;border-right:.5pt solid black'><span
+  style='mso-spacerun:yes'>        </span>00+12</td>
+  <td></td>
+ </tr>
+ <tr height=60 style='height:45.0pt'>
+  <td height=60 class=xl115 width=119 style='height:45.0pt;width:89pt'>Изобарическая
+  поверхность</td>
+  <td class=xl114 width=57 style='width:43pt'>N</td>
+  <td class=xl114 width=48 style='width:36pt'>N <font class="font17"><sub>ош</sub></font></td>
+  <td class=xl115 width=70 style='border-left:none;width:53pt'>Ср. значение</td>
+  <td class=xl115 width=54 style='border-left:none;width:41pt'>СКО</td>
+  <td class=xl115 width=67 style='border-left:none;width:50pt'>СКЗ</td>
+  <td class=xl116 width=86 style='border-top:none;border-left:none;width:65pt'>Взв.СКЗ</td>
+  <td class=xl116 width=80 style='border-left:none;width:60pt'>N</td>
+  <td class=xl114 width=51 style='width:38pt'>N <font class="font17"><sub>ош</sub></font></td>
+  <td class=xl116 width=80 style='border-top:none;border-left:none;width:60pt'>Ср.
+  значение</td>
+  <td class=xl116 width=67 style='border-top:none;border-left:none;width:50pt'>СКО</td>
+  <td class=xl116 width=83 style='border-top:none;border-left:none;width:62pt'>СКЗ</td>
+  <td class=xl116 width=71 style='border-top:none;border-left:none;width:53pt'>Взв.СКЗ</td>
+  <td class=xl116 width=62 style='border-top:none;border-left:none;width:47pt'>СКЗ</td>
+  <td class=xl116 width=74 style='border-top:none;border-left:none;width:56pt'>Взв.СКЗ</td>
+  <td></td>
+ </tr>

@@ -1,0 +1,335 @@
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl117 style='height:15.75pt;border-top:none'>слой</td>
+  <td class=xl100 style='border-top:none'>&nbsp;</td>
+  <td class=xl100 style='border-top:none'>&nbsp;</td>
+  <td class=xl109 style='border-top:none'>&nbsp;</td>
+  <td class=xl109 style='border-top:none'>&nbsp;</td>
+  <td class=xl109 style='border-top:none'>&nbsp;</td>
+  <td class=xl109 style='border-top:none'>SLOY_WEIGHTED_SKZ_00</td>
+  <td class=xl100 style='border-top:none'>&nbsp;</td>
+  <td class=xl110 style='border-top:none'>&nbsp;</td>
+  <td class=xl109 style='border-top:none'>&nbsp;</td>
+  <td class=xl109 style='border-top:none'>&nbsp;</td>
+  <td class=xl109 style='border-top:none'>&nbsp;</td>
+  <td class=xl109 style='border-top:none'>SLOY_WEIGHTED_SKZ_12</td>
+  <td class=xl98>SLOY_COMMON_SKZ</td>
+  <td class=xl166 style='border-top:none'>WEIGHTED_COMMON_SLOY_SKZ</td>
+  <td class=xl89></td>
+ </tr>
+ 
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl154 style='height:15.75pt'>&nbsp;</td>
+  <td class=xl101></td>
+  <td class=xl101></td>
+  <td class=xl101></td>
+  <td class=xl101></td>
+  <td class=xl101></td>
+  <td class=xl101></td>
+  <td class=xl101></td>
+  <td class=xl101></td>
+  <td class=xl101></td>
+  <td class=xl101></td>
+  <td class=xl130></td>
+  <td></td>
+  <td class=xl89></td>
+  <td class=xl167>&nbsp;</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl155 style='height:15.75pt'>Типы р/з</td>
+  <td class=xl148 colspan=3 style='mso-ignore:colspan'>RZO_TYPE_NUMBER1</td>
+  <td class=xl150>&nbsp;</td>
+  <td class=xl149>&nbsp;</td>
+  <td class=xl151>&nbsp;</td>
+  <td class=xl148 colspan=3 style='mso-ignore:colspan'>RZO_TYPE_NUMBER2</td>
+  <td class=xl148>&nbsp;</td>
+  <td class=xl151>&nbsp;</td>
+  <td class=xl151>&nbsp;</td>
+  <td class=xl151>&nbsp;</td>
+  <td class=xl165>&nbsp;</td>
+  <td></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl128 style='height:12.75pt'></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl130></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=19 style='height:14.25pt'>
+  <td height=19 class=xl131 colspan=2 style='height:14.25pt;mso-ignore:colspan'>Ближайшие
+  станции:</td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+  <tr style="height:13.2pt" height="18">
+  <td class="xl128" colspan="2" style="height:13.2pt;mso-ignore:colspan" height="18">HREF1</td>
+  <td class="xl128">HREF2</td>
+  <td class="xl128"></td>
+  <td></td>
+  <td class="xl128">HREF3</td>
+  <td></td>
+  <td class="xl128"></td>
+  <td class="xl128">HREF4</td>
+  <td class="xl128"></td>
+  <td class="xl128"></td>
+  <td class="xl128">HREF5</td>
+  <td class="xl128"></td>
+  <td colspan="3" style="mso-ignore:colspan"></td>
+ </tr>
+ <tr style="height:13.2pt" height="18">
+  <td class="xl128" style="height:13.2pt" height="18">HREF6</td>
+  <td class="xl128">HREF7</td>
+  <td class="xl128"></td>
+  <td></td>
+  <td class="xl128">HREF8</td>
+  <td></td>
+  <td class="xl128"></td>
+  <td class="xl128">HREF9</td>
+  <td class="xl128"></td>
+  <td class="xl128"></td>
+  <td class="xl128"></td>
+  <td class="xl128"></td>
+  <td class="xl128"></td>
+  <td colspan="3" style="mso-ignore:colspan"></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl128 style='height:12.75pt'></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl130></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 class=xl131 style='height:16.5pt'>N</td>
+  <td class=xl131 colspan=7 style='mso-ignore:colspan'>число наблюдений за
+  вычетом количества грубых ошибок <font class="font15"><sup>**</sup></font></td>
+  <td class=xl134></td>
+  <td class=xl134></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=26 style='height:19.5pt'>
+  <td height=26 class=xl135 width=119 style='height:19.5pt;width:89pt'>N <font
+  class="font17"><sub>ош</sub></font></td>
+  <td class=xl131 colspan=4 style='mso-ignore:colspan'>количество грубых ошибок</td>
+  <td class=xl131></td>
+  <td class=xl131></td>
+  <td class=xl133></td>
+  <td class=xl134></td>
+  <td class=xl134></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=19 style='height:14.25pt'>
+  <td height=19 class=xl131 style='height:14.25pt'>Ср.значение</td>
+  <td class=xl131 colspan=6 style='mso-ignore:colspan'>среднее<span
+  style='mso-spacerun:yes'>  </span>значение
+  &quot;наблюдение-минус-прогноз&quot;, гпм<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl133></td>
+  <td class=xl134></td>
+  <td class=xl134></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=19 style='height:14.25pt'>
+  <td height=19 class=xl131 style='height:14.25pt'>СКО</td>
+  <td class=xl131 colspan=9 style='mso-ignore:colspan'>среднеквадратическое
+  отклонение<span style='mso-spacerun:yes'>  </span>значений
+  'наблюдение-минус-прогноз', гпм<span style='mso-spacerun:yes'> </span></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=19 style='height:14.25pt'>
+  <td height=19 class=xl131 style='height:14.25pt'>СКЗ</td>
+  <td class=xl131 colspan=7 style='mso-ignore:colspan'>среднеквадратичное
+  значение &quot;наблюдение-минус-прогноз&quot;, гпм<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl134></td>
+  <td class=xl134></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 class=xl131 style='height:16.5pt'>Взв.СКЗ</td>
+  <td class=xl94 colspan=9 style='mso-ignore:colspan'>взвешенное
+  среднеквадратичное значение &quot;наблюдение-минус-прогноз&quot;, гпм<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 class=xl131 style='height:16.5pt'>Слой</td>
+  <td class=xl94 colspan=15 style='mso-ignore:colspan'>взвешенное
+  среднеквадратичное значение &quot;наблюдение-минус-прогноз&quot; в слое
+  850-50 гПа на избранных поверхностях (5 поверхностей), гпм</td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 class=xl156 style='height:16.5pt'>Типы р/з</td>
+  <td class=xl131 colspan=10 style='mso-ignore:colspan'>используемые типы
+  радиозондов, &nbsp;код<font class="font15"><sup>***</sup></font><font
+  class="font14"> = &nbsp;количество, соответственно за сроки 00 и 12 ВСВ</font></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=19 style='height:14.25pt'>
+  <td height=19 class=xl131 style='height:14.25pt'></td>
+  <td class=xl131></td>
+  <td class=xl132></td>
+  <td class=xl132></td>
+  <td class=xl132></td>
+  <td class=xl131></td>
+  <td class=xl131></td>
+  <td class=xl133></td>
+  <td class=xl134></td>
+  <td class=xl134></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=19 style='height:14.25pt'>
+  <td height=19 class=xl136 colspan=9 style='height:14.25pt;mso-ignore:colspan'><a
+  href="http://cao-ntcr.mipt.ru/monitor/doc/procs.htm" target="_parent"><span
+  style='font-size:11.0pt'>** Процедуры и критерии мониторинга статистических
+  характеристик качества данных</span></a></td>
+  <td class=xl134></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=19 style='height:14.25pt'>
+  <td height=19 class=xl136 colspan=7 style='height:14.25pt;mso-ignore:colspan'><a
+  href="http://cao-ntcr.mipt.ru/monitor/stuff/upperair-rf2015.pdf"
+  target="_parent"><span style='font-size:11.0pt'>*** Обзорное письмо «О работе
+  аэрологической сети РФ в 2015 году»,</span></a></td>
+  <td class=xl131 colspan=7 style='mso-ignore:colspan'>раздел «Об использовании
+  кодовых цифр радиозондов», стр.15</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=34 style='height:25.5pt;mso-xlrowspan:2'>
+  <td height=34 colspan=16 style='height:25.5pt;mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td class=xl128></td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 colspan=16 style='height:12.75pt;mso-ignore:colspan'></td>
+ </tr>
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 class=xl95 style='height:12.75pt'></td>
+  <td colspan=15 style='mso-ignore:colspan'></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=119 style='width:89pt'></td>
+  <td width=57 style='width:43pt'></td>
+  <td width=48 style='width:36pt'></td>
+  <td width=70 style='width:53pt'></td>
+  <td width=54 style='width:41pt'></td>
+  <td width=67 style='width:50pt'></td>
+  <td width=86 style='width:65pt'></td>
+  <td width=80 style='width:60pt'></td>
+  <td width=51 style='width:38pt'></td>
+  <td width=80 style='width:60pt'></td>
+  <td width=67 style='width:50pt'></td>
+  <td width=83 style='width:62pt'></td>
+  <td width=71 style='width:53pt'></td>
+  <td width=62 style='width:47pt'></td>
+  <td width=74 style='width:56pt'></td>
+  <td width=64 style='width:48pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

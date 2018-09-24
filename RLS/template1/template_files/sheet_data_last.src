@@ -1,0 +1,19 @@
+
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl147 style='height:15.75pt'>ISOBARE_VALUE</td>
+  <td class=xl104 style='border-left:none'>NUM_VALUE0</td>
+  <td class=xl105>NUM_ER_VALUE0</td>
+  <td class=xl106>MEAN_VALUE0</td>
+  <td class=xl106>QUADRATIC_ERROR0</td>
+  <td class=xl106>QUADRATIC_VALUE0</td>
+  <td class=xl107>WEIGHTED_VALUE0</td>
+  <td class=xl105>NUM_VALUE1</td>
+  <td class=xl108>NUM_ER_VALUE1</td>
+  <td class=xl106>MEAN_VALUE1</td>
+  <td class=xl106>QUADRATIC_ERROR1</td>
+  <td class=xl106>QUADRATIC_VALUE1</td>
+  <td class=xl107>WEIGHTED_VALUE1</td>
+  <td class=xl161 style='border-left:none'>COMMON_QUADRATIC_VALUE</td>
+  <td class=xl164>COMMON_WEIGHTED_VALUE</td>
+  <td></td>
+</tr>
