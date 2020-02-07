@@ -1,6 +1,7 @@
 #include <xstring>
 #include <fstream>
 #include "HTMLTemplate.h"
+#include "SessionLogger.h"
 
 #ifndef MAINHTMLRESULT_H
 #define MAINHTMLRESULT_H

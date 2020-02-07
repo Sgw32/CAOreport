@@ -23,7 +23,8 @@ class NearStationsSingleton
   public:
 	void setStationIndex(string index);
 	string makeAHrefRow(size_t i);
-	void loadBaseFiles();
+	int loadBaseFiles();
+	int checkStationCat(string index);
 	NearStations* ns; //Name of our station - Names/Links.
     static NearStationsSingleton * getInstance() {
         if(!p_instance)           

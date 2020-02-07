@@ -7,10 +7,14 @@ std::string MTREXPSingleton::extendDateByCnt(int cnt,int month,int year)
 {
 	int months = year*12+month;
 	months-=cnt;
-
+	
 	int mf = months%12;
+
 	if (!mf)
+	{
 		mf=12;
+		months--;
+	}
 	return string("01.") + IntToStr(mf) + "." + IntToStr(months / 12);
 }
 
@@ -30,7 +34,7 @@ std::string MTREXPSingleton::extendEndDateByCnt(int cnt,int month,int year)
 		bool leapyear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 
 		if (leapyear == 0)
-				endMonthDay = "29.";
+				endMonthDay = "28.";
 		else 
 				endMonthDay = "29.";
 	}
@@ -38,7 +42,10 @@ std::string MTREXPSingleton::extendEndDateByCnt(int cnt,int month,int year)
 		endMonthDay = "31.";
 	
 	if (!mf)
+	{
 		mf=12;
+		months--;
+	}
 
 	return endMonthDay + IntToStr(mf) + "." + IntToStr(months / 12);
 }
@@ -146,7 +153,7 @@ void MTREXPSingleton::readResultTxt()
 	std::ifstream t(filename.c_str());
 	if (t.is_open())
 	{
-		t >> mStationName;
+		getline(t,mStationName);
 		for (int i=0;i!=ISOBARES;i++)
 		{
 			/*int P;
@@ -179,8 +186,11 @@ void MTREXPSingleton::readResultTxt()
 			//s_c_wqV[1] = parseCommas(s_c_wqV[1]);
 
 			iso->isobare = atoi(sP.c_str());
-			iso->Nerr.push_back(atof(sNern[0].c_str()));
-			iso->Nerr.push_back(atof(sNern[1].c_str()));
+#ifdef VERBOSE
+			cout<<"Isobare P="<<iso->isobare<<endl;
+#endif
+			iso->Nerr.push_back((int)atof(sNern[0].c_str()));
+			iso->Nerr.push_back((int)atof(sNern[1].c_str()));
 
 			if (atoi(sNn[0].c_str())<=9) 
 			{
@@ -192,8 +202,8 @@ void MTREXPSingleton::readResultTxt()
 				hadError[1] = 1;
 				iso->iso_hadError[1] = 1;
 			}
-			iso->N.push_back(atof(sNn[0].c_str()));
-			iso->N.push_back(atof(sNn[1].c_str()));
+			iso->N.push_back((int)atof(sNn[0].c_str()));
+			iso->N.push_back((int)atof(sNn[1].c_str()));
 			iso->meanV.push_back(atof(smV[0].c_str()));
 			iso->meanV.push_back(atof(smV[1].c_str()));
 			iso->quad_err1.push_back(atof(sqE[0].c_str()));
@@ -235,6 +245,10 @@ void MTREXPSingleton::generateResultTxt()
 	cmd += " \\st="+mStation_index;
 	cmd += " \\pere=" + extendEndDateByCnt(-2-mMonthSpan+mCnt,atoi(mMonth.c_str()),atoi(mYear.c_str()));
 	cmd += " \\pers=" + extendDateByCnt(mCnt-1-mMonthSpan,atoi(mMonth.c_str()),atoi(mYear.c_str()));
+#ifdef VERBOSE
+	std::cout << cmd <<endl;
+	system("pause");
+#endif
 	system(cmd.c_str());
 }
 
@@ -247,5 +261,9 @@ void MTREXPSingleton::generateFullResultTxt()
 	cmd += " \\st="+mStation_index;
 	cmd += " \\pere=" + extendEndDateByCnt(-1,atoi(mMonth.c_str()),atoi(mYear.c_str()));
 	cmd += " \\pers=" + extendDateByCnt(mCnt-1,atoi(mMonth.c_str()),atoi(mYear.c_str()));
+#ifdef VERBOSE
+	std::cout << cmd << endl;
+	system("pause");
+#endif
 	system(cmd.c_str());
 }

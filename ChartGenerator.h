@@ -1,5 +1,6 @@
 #include "HTMLTemplate.h"
 #include "MTREXPSingleton.h"
+#include "SessionLogger.h"
 
 #ifndef CHARTGENERATOR_H
 #define CHARTGENERATOR_H

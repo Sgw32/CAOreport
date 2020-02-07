@@ -487,12 +487,20 @@ void SheetGenerator::processIsobareTable()
 
 void SheetGenerator::process()
 {
+#ifdef VERBOSE
+	cout<<"Sheet1"<<endl;
+	system("pause");
+#endif
 	generateResultTxt();
 	readResultTxt();
 	processHeader();
 	processIsobareTable();
 	processRzoTypes();
 	processEnding();
+#ifdef VERBOSE
+	cout<<"Sheet1_end"<<endl;
+	system("pause");
+#endif
 }
 
 string SheetGenerator::getData()

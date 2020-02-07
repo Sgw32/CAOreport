@@ -1,2 +1,3 @@
-@echo off
-CAOReport Y=2018 M=07 I=27612 C=03
+
+rem CAOReport_2008 Y=2018 M=02 I=20744 C=03
+CAOReport_2008 Y=2019 M=01 I=20744 C=01

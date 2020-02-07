@@ -89,7 +89,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)/RLS/"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="2"
@@ -195,6 +195,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\SessionLogger.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SheetGenerator.cpp"
 				>
 			</File>
@@ -258,6 +262,10 @@
 			</File>
 			<File
 				RelativePath=".\NearStationsSingleton.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SessionLogger.h"
 				>
 			</File>
 			<File

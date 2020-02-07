@@ -20,9 +20,13 @@ void StructureMaker::makeFolderStructure()
 			+ getRlsPrefix(station_index) + "\\" + station_index + "_obfg_g.files");*/
 	outdir = GetExePath()+"\\results\\ae_obfg\\" 
 			+ getRlsPrefix(station_index) + "\\";
+	SessionLogger::getInstance()->logData("StructureMaker: makeFolderStructure make folders " + GetExePath()+"\\results\\ae_obfg\\" 
+			+ getRlsPrefix(station_index) + "\\");
 	string res_dir = string("md "+GetExePath()+"\\results\\ae_obfg\\"  
 			+ getRlsPrefix(station_index) + "\\" + station_index + "_obfg_g.files");
+	SessionLogger::getInstance()->logData("StructureMaker: makeFolderStructure CMD " + res_dir);
 	system(res_dir.c_str());
+
 	
 }
 
@@ -37,6 +41,7 @@ string StructureMaker::getRlsPrefix(string d1)
 
 void StructureMaker::loadRlsPrefixes()
 {
+	SessionLogger::getInstance()->logData("StructureMaker: loading rls_prefixes.csv");
 	std::ifstream t("rls_prefixes.csv");
 	if (t.is_open())
 	{
@@ -46,18 +51,22 @@ void StructureMaker::loadRlsPrefixes()
 			rls_prefs[d1]=d2;
 		}
 	}
+	SessionLogger::getInstance()->logData("StructureMaker: loadRlsPrefixes ok");
 }
 
 void StructureMaker::copyChartJSFiles()
 {
+	SessionLogger::getInstance()->logData("StructureMaker: copying chart js files. " + mTm->getTemplateDirectory()+"\\template_files\\Chart.bundle.js " + outdir+station_index+"_obfg_g.files\\Chart.bundle.js");
 	copyFile(mTm->getTemplateDirectory()+"\\template_files\\Chart.bundle.js",
 		outdir+station_index+"_obfg_g.files\\Chart.bundle.js");
+	SessionLogger::getInstance()->logData("StructureMaker: copying chart js files. " + mTm->getTemplateDirectory()+"\\template_files\\utils.js " + outdir+station_index+"_obfg_g.files\\utils.js");
 	copyFile(mTm->getTemplateDirectory()+"\\template_files\\utils.js",
 		outdir+station_index+"_obfg_g.files\\utils.js");
 }
 
 void StructureMaker::arrangeFilesToFolders()
 {
+	SessionLogger::getInstance()->logData("StructureMaker: carrangeFilesToFolders. " + mTm->getTemplateDirectory()+"\\template_files\\stylesheet.css " + outdir+station_index+"_obfg_g.files\\stylesheet.css");
 	copyFile(mTm->getTemplateDirectory()+"\\template_files\\stylesheet.css",
 		outdir+station_index+"_obfg_g.files\\stylesheet.css");
 }
@@ -68,6 +77,7 @@ void StructureMaker::makeMainHtml()
 	{
 		string mainHTML = mTm->returnMainHTMLResult();
 		string mainHTMLpath = outdir+station_index+"_obfg_g.htm";
+		SessionLogger::getInstance()->logData("StructureMaker: makeMainHtml: " + mainHTMLpath);
 		std::ofstream t1(mainHTMLpath.c_str());
 		t1<<mainHTML;
 		t1.close();
@@ -80,6 +90,7 @@ void StructureMaker::makeTabStrip()
 	{
 		string tabstrip = mTm->returnTabStripResult();
 		string tabstrippath = outdir+station_index+"_obfg_g.files\\tabstrip.htm";
+		SessionLogger::getInstance()->logData("StructureMaker: makeTabStrip: " + tabstrippath);
 		std::ofstream t1(tabstrippath.c_str());
 		t1<<tabstrip;
 		t1.close();
@@ -122,6 +133,7 @@ void StructureMaker::makeSheets()
 			char sheet_num[20];
 			sprintf_s(sheet_num,"%03d",i+1);
 			string sheetpath = outdir+station_index+"_obfg_g.files\\sheet"+string(sheet_num)+".htm";
+			SessionLogger::getInstance()->logData("StructureMaker: makeSheets: " + sheetpath);
 			std::ofstream t1(sheetpath.c_str());
 			t1<<data;
 			t1.close();
@@ -139,6 +151,7 @@ void StructureMaker::makeCharts()
 			char chart_num[20];
 			sprintf_s(chart_num,"%03d",i+1);
 			string chartpath = outdir+station_index+"_obfg_g.files\\chart"+string(chart_num)+".htm";
+			SessionLogger::getInstance()->logData("StructureMaker: makeCharts: " + chartpath);
 			std::ofstream t1(chartpath.c_str());
 			t1<<chart;
 			t1.close();

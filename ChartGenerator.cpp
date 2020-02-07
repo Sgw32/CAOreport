@@ -14,8 +14,11 @@ std::string ChartGenerator::getData()
 
 void ChartGenerator::process()
 {
+	SessionLogger::getInstance()->logDataPause("ChartGenerator");
 	MTREXPSingleton::getInstance()->generateFullResultTxt();
+	SessionLogger::getInstance()->logDataPause("ChartGenerator: Read MTREXP");
 	MTREXPSingleton::getInstance()->readResultTxt();
+	SessionLogger::getInstance()->logDataPause("ChartGenerator: mIsobares");
 	mIsobares = MTREXPSingleton::getInstance()->mIsobares;
 	
 	//Process frameset links
@@ -75,62 +78,88 @@ void ChartGenerator::process()
 	}
 
 	size_t i;
-
+	SessionLogger::getInstance()->logDataPause("ChartGenerator: process mIsobares");
 	for (i=0;i!=mIsobares.size();i++)
 	{
 		isodata* iso = mIsobares[i];
-		string newDataset = mDataset;
+		if (iso)
+		{
+			string newDataset = mDataset;
+			
+
+			prefix = IntToStr2(iso->isobare)+"_"+IntToStr2(mTime);
+			index = newDataset.find("DATASET_NAME");
+			while (index != std::string::npos) {
+				 /* Make the replacement. */
+				 newDataset.replace(index, string("DATASET_NAME").size(), prefix.c_str());
+				 /* Advance index forward so the next iteration doesn't pick it up as well. */
+				 index += string("DATASET_NAME").size();
+				 /* Locate the substring to replace. */
+				 index = newDataset.find("DATASET_NAME", index);
+			}
+
+			
+
+			SessionLogger::getInstance()->logData("ChartGenerator: getYData");
+			prefix = getYData(i,mTimeId);
+			index = newDataset.find("VALUES_DATA");
+
+			stringstream ss2;
+			ss2 << "ChartGenerator: prefix " << prefix <<endl;
+			SessionLogger::getInstance()->logData(ss2.str());
+
+			while (index != std::string::npos) {
+				 /* Make the replacement. */
+				 newDataset.replace(index, string("VALUES_DATA").size(), prefix.c_str());
+				 /* Advance index forward so the next iteration doesn't pick it up as well. */
+				 index += string("VALUES_DATA").size();
+				 /* Locate the substring to replace. */
+				 index = newDataset.find("VALUES_DATA", index);
+			}
+			SessionLogger::getInstance()->logData("ChartGenerator: getLineBackground");
+			prefix = getLineBackground(i);
+			index = newDataset.find("#LINE_COLOR1");
+			while (index != std::string::npos) {
+				 /* Make the replacement. */
+				 newDataset.replace(index, string("#LINE_COLOR1").size(), prefix.c_str());
+				 /* Advance index forward so the next iteration doesn't pick it up as well. */
+				 index += string("#LINE_COLOR1").size();
+				 /* Locate the substring to replace. */
+				 index = newDataset.find("#LINE_COLOR1", index);
+			}
+
+			index = newDataset.find("#LINE_COLOR2");
+			prefix = getLineBorder(i);
+			while (index != std::string::npos) {
+				 /* Make the replacement. */
+				newDataset.replace(index, string("#LINE_COLOR2").size(), prefix.c_str());
+				 /* Advance index forward so the next iteration doesn't pick it up as well. */
+				index += string("#LINE_COLOR2").size();
+				 /* Locate the substring to replace. */
+				index = newDataset.find("#LINE_COLOR2", index);
+			}
+			SessionLogger::getInstance()->logData("ChartGenerator: adding dataset");
 		
-		prefix = IntToStr2(iso->isobare)+"_"+IntToStr2(mTime);
-		index = newDataset.find("DATASET_NAME");
-		while (index != std::string::npos) {
-			 /* Make the replacement. */
-			 newDataset.replace(index, string("DATASET_NAME").size(), prefix.c_str());
-			 /* Advance index forward so the next iteration doesn't pick it up as well. */
-			 index += string("DATASET_NAME").size();
-			 /* Locate the substring to replace. */
-			 index = newDataset.find("DATASET_NAME", index);
+			stringstream ss;
+			ss << "ChartGenerator: newDataset" << newDataset <<endl;
+			SessionLogger::getInstance()->logData(ss.str());
+			
+			mHead=mHead+newDataset;
+			mHead+=",\n";
 		}
-		prefix = getYData(i,mTimeId);
-		index = newDataset.find("VALUES_DATA");
-		while (index != std::string::npos) {
-			 /* Make the replacement. */
-			 newDataset.replace(index, string("VALUES_DATA").size(), prefix.c_str());
-			 /* Advance index forward so the next iteration doesn't pick it up as well. */
-			 index += string("VALUES_DATA").size();
-			 /* Locate the substring to replace. */
-			 index = newDataset.find("VALUES_DATA", index);
+		else
+		{
+			SessionLogger::getInstance()->logData("Error in isodata! Exiting.");
+			cout<<"Error in isodata! Exiting. " <<endl;
+			system("pause");
+			exit(0);
 		}
-
-		prefix = getLineBackground(i);
-		index = newDataset.find("#LINE_COLOR1");
-		while (index != std::string::npos) {
-			 /* Make the replacement. */
-			 newDataset.replace(index, string("#LINE_COLOR1").size(), prefix.c_str());
-			 /* Advance index forward so the next iteration doesn't pick it up as well. */
-			 index += string("#LINE_COLOR1").size();
-			 /* Locate the substring to replace. */
-			 index = newDataset.find("#LINE_COLOR1", index);
-		}
-
-		index = newDataset.find("#LINE_COLOR2");
-		while (index != std::string::npos) {
-			 /* Make the replacement. */
-			newDataset.replace(index, string("#LINE_COLOR2").size(), prefix.c_str());
-			 /* Advance index forward so the next iteration doesn't pick it up as well. */
-			index += string("#LINE_COLOR2").size();
-			 /* Locate the substring to replace. */
-			index = newDataset.find("#LINE_COLOR2", index);
-		}
-
-
-		mHead=mHead+newDataset;
-		mHead+=",\n";
-	
 	}
+	SessionLogger::getInstance()->logDataPause("ChartGenerator: finished");
 
 	//RaRa
 
+	SessionLogger::getInstance()->logDataPause("ChartGenerator: process RaRa");
 	string newDataset = mDataset;
 	
 	prefix = string("RaRa_")+IntToStr2(mTime);
@@ -190,7 +219,7 @@ void ChartGenerator::process()
 	}
 
 	mHead=mHead+newDataset;
-
+	SessionLogger::getInstance()->logDataPause("End_ChartGenerator");
 }
 
 string ChartGenerator::getLineBackground(int i)
@@ -198,19 +227,19 @@ string ChartGenerator::getLineBackground(int i)
 	string res = "";
 	switch (i)
 	{
-	case 0:
+	case 4:
 		res = "#7f007f";
 		break;
-	case 1:
+	case 3:
 		res = "#00ffff";
 		break;
 	case 2:
-		res = "#ff7f40";
+		res = "#f79646";
 		break;
-	case 3:
+	case 1:
 		res = "#ff00ff";
 		break;
-	case 4:
+	case 0:
 		res = "#00007f";
 		break;
 	default:
@@ -222,7 +251,28 @@ string ChartGenerator::getLineBackground(int i)
 
 string ChartGenerator::getLineBorder(int i)
 {
-	string res = "#000000";
+	string res = "";
+	switch (i)
+	{
+	case 4:
+		res = "#7f007f";
+		break;
+	case 3:
+		res = "#00ffff";
+		break;
+	case 2:
+		res = "#ffff00";
+		break;
+	case 1:
+		res = "#ff00ff";
+		break;
+	case 0:
+		res = "#00007f";
+		break;
+	default:
+		res = "#000000";
+		break;
+	}
 	return res;
 }
 
@@ -351,8 +401,15 @@ std::string ChartGenerator::getYData(size_t i,char iUT)
 
 			p1.assign((std::istreambuf_iterator<char>(t)),
 				std::istreambuf_iterator<char>());
+			t.close();
 		}	
-		t.close();
+		else
+		{
+			cout << "Opening file " << filename << " failed! Exiting." << endl;
+			system("pause");
+			exit(0);
+		}
+		
 		
 	//}
 	return p1.substr(1,p1.size()-1);

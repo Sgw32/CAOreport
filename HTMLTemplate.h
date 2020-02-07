@@ -27,7 +27,10 @@ static std::string extendDateByCntV2(int cnt,int month,int year)
 	//Year and month
 	int mf = months%12;
 	if (mf==0)
+	{
 		mf=12;
+		months--;
+	}
 	return IntToStr2(months / 12) + "-" + MonthToStr(months%12);
 }
 

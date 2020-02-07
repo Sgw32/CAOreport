@@ -5,4 +5,6 @@
 #define LAUNCHES_TIMES {00, 12}
 #define ISOBARES 5
 
+//#define VERBOSE
+
 #endif

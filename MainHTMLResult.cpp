@@ -25,6 +25,8 @@ void MainHTMLResult::process()
 		mSheet_links += string(mth)+".htm\">\n";
 	}
 	*/
+
+	SessionLogger::getInstance()->logDataPause("StructureMaker: MainHTMLResult start ");
 	//Process frameset links
 	string prefix = mStation_index + "_obfg_g";
 	size_t index = mFrameset_srcs.find("template_menu");
@@ -36,11 +38,14 @@ void MainHTMLResult::process()
 		 /* Locate the substring to replace. */
 		 index = mFrameset_srcs.find("template_menu", index);
 	}
+
+	SessionLogger::getInstance()->logDataPause("StructureMaker: MainHTMLResult end ");
 	
 }
 
 void MainHTMLResult::loadTemplate(std::string templateDir)
 {
+	SessionLogger::getInstance()->logDataPause("StructureMaker: MainHTMLResult loadTemplate ");
 	string head;
 	string sheet_links;
 	string js_data;
@@ -124,5 +129,6 @@ void MainHTMLResult::loadTemplate(std::string templateDir)
 	t2.close();
 	t3.close();
 	t4.close();
+	SessionLogger::getInstance()->logDataPause("StructureMaker: MainHTMLResult loadTemplate end");
 }
 
