@@ -19,8 +19,11 @@ public:
 	void processEnding();
 	void processHeader();
 	void processRzoTypes();
+	std::string generateAHRefForMonth(std::string month, std::string year);
 	std::string calcCurrentMonthNameRU(int cnt,int month, int year);
 	std::string extendDateByCnt(int cnt,int month,int year);
+	std::string extendYearByCnt(int cnt,int month,int year);
+	std::string extendMonthByCnt(int cnt,int month,int year);
 	std::string processIsobareString(string isoData, isodata* iso);
 	void setIsobareMap(map<int,isodata*> isobares);
 	std::string getData();

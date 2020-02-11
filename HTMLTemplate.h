@@ -20,6 +20,34 @@ static std::string MonthToStr(int a)
 	return ss.str();
 }
 
+static std::string extendYearByCntV2(int cnt,int month,int year)
+{
+	int months = year*12+month;
+	months-=cnt;
+	//Year and month
+	int mf = months%12;
+	if (mf==0)
+	{
+		mf=12;
+		months--;
+	}
+	return IntToStr2(months / 12);
+}
+
+static std::string extendMonthByCntV2(int cnt,int month,int year)
+{
+	int months = year*12+month;
+	months-=cnt;
+	//Year and month
+	int mf = months%12;
+	if (mf==0)
+	{
+		mf=12;
+		months--;
+	}
+	return MonthToStr(mf);
+}
+
 static std::string extendDateByCntV2(int cnt,int month,int year)
 {
 	int months = year*12+month;
@@ -31,8 +59,26 @@ static std::string extendDateByCntV2(int cnt,int month,int year)
 		mf=12;
 		months--;
 	}
-	return IntToStr2(months / 12) + "-" + MonthToStr(months%12);
+	return IntToStr2(months / 12) + "-" + MonthToStr(mf);
 }
+
+/*
+std::string MTREXPSingleton::extendDateByCnt(int cnt,int month,int year)
+{
+	int months = year*12+month;
+	months-=cnt;
+	
+	int mf = months%12;
+
+	if (!mf)
+	{
+		mf=12;
+		months--;
+	}
+	return string("01.") + IntToStr(mf) + "." + IntToStr(months / 12);
+}
+
+*/
 
 class HTMLTemplate
 {
@@ -45,14 +91,20 @@ public:
 		mMonth = month;
 		mStation_index = station_index;
 	}
+	void setActualStationIndex(string act_index)
+	{
+		mCurrentStationIndex = act_index;
+	}
 	void setMonthCount(unsigned int cnt)
 	{
 		mCnt = cnt;
+		//todo: recalc year
 	}
 	virtual void process(){};
 	virtual std::string getData(){return "";};
 	unsigned int mCnt;
 	string prefix;
+	string mCurrentStationIndex;
 	std::string mYear,mMonth,mStation_index;
 };
 

@@ -42,6 +42,7 @@ class MTREXPSingleton
 	std::string mYear,mMonth,mStation_index;
 	int mMonthSpan;
 	string mStationName;
+	string mCurrentStationIndex;
 	vector<isodata*> mIsobares;
 	vector<string> mRzoTypesStr;
 	void generateResultTxt();
@@ -55,6 +56,10 @@ class MTREXPSingleton
 		mYear = year;
 		mMonth = month;
 		mStation_index = station_index;
+	}
+	void setActualStationIndex(string act_index)
+	{
+		mCurrentStationIndex = act_index;
 	}
 	void setMonthCount(unsigned int cnt)
 	{

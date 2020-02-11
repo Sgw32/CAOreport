@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MTREXPSingleton.h"
+#include "SessionLogger.h"
   
 MTREXPSingleton* MTREXPSingleton::p_instance = 0;
 
@@ -242,13 +243,14 @@ void MTREXPSingleton::generateResultTxt()
 	hadError[1] = 0;
 	string cmd = "MTREXP.exe \\rep=1 ";
 	cmd += "\\loc=0";
-	cmd += " \\st="+mStation_index;
+	cmd += " \\st="+mCurrentStationIndex;
 	cmd += " \\pere=" + extendEndDateByCnt(-2-mMonthSpan+mCnt,atoi(mMonth.c_str()),atoi(mYear.c_str()));
 	cmd += " \\pers=" + extendDateByCnt(mCnt-1-mMonthSpan,atoi(mMonth.c_str()),atoi(mYear.c_str()));
 #ifdef VERBOSE
 	std::cout << cmd <<endl;
 	system("pause");
 #endif
+	SessionLogger::getInstance()->logData("Calling MTREXP ResTxt:" + cmd);
 	system(cmd.c_str());
 }
 
@@ -258,12 +260,13 @@ void MTREXPSingleton::generateFullResultTxt()
 	hadError[1] = 1;
 	string cmd = "MTREXP.exe \\rep=1 ";
 	cmd += "\\loc=0";
-	cmd += " \\st="+mStation_index;
+	cmd += " \\st="+mCurrentStationIndex;
 	cmd += " \\pere=" + extendEndDateByCnt(-1,atoi(mMonth.c_str()),atoi(mYear.c_str()));
 	cmd += " \\pers=" + extendDateByCnt(mCnt-1,atoi(mMonth.c_str()),atoi(mYear.c_str()));
 #ifdef VERBOSE
 	std::cout << cmd << endl;
 	system("pause");
 #endif
+	SessionLogger::getInstance()->logData("Calling MTREXP Full ResTxt:" + cmd);
 	system(cmd.c_str());
 }

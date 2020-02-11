@@ -22,6 +22,7 @@ class NearStationsSingleton
     NearStationsSingleton& operator=( NearStationsSingleton& );
   public:
 	void setStationIndex(string index);
+	inline string getCurrentStationIndex(){return mCurrentStationIndex;}
 	string makeAHrefRow(size_t i);
 	int loadBaseFiles();
 	int checkStationCat(string index);
@@ -32,6 +33,8 @@ class NearStationsSingleton
         return p_instance;
     }
 	string mStationIndex;
+	string mCurrentStationIndex;
+	vector<string> altStationNames;
 };
 
 #endif

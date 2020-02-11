@@ -27,12 +27,18 @@ void TemplateMaster::setMainHTMLData(string year, string month,string station_in
 		HTMLTemplate* mh = (*i);
 		if (mh)
 		{
+			SessionLogger::getInstance()->logData("Setting HTMLTemplate data: " + mCurrentStationIndex + " " + year 
+				+ " " + month
+				+ " " + station_index
+				+ " " + count);
+			mh->setActualStationIndex(mCurrentStationIndex);
 			mh->setData(year,month,station_index);
 			mh->setMonthCount(atoi(count.c_str()));
 		}
 	}
 	mCount = atoi(count.c_str());
 	MTREXPSingleton::getInstance()->setData(year,month,station_index);
+	MTREXPSingleton::getInstance()->setActualStationIndex(mCurrentStationIndex);
 	MTREXPSingleton::getInstance()->setMonthCount(mCount);
 }
 

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "StructureMaker.h"
 #include "ConsoleParams.h"
+#include "NearStationsSingleton.h"
 
 StructureMaker::StructureMaker()
 {
@@ -36,7 +37,24 @@ string StructureMaker::getRlsPrefix(string d1)
 	if (it!=rls_prefs.end())
 		return rls_prefs[d1];
 	else
-		return "undef";
+	{
+		string d2 = NearStationsSingleton::getInstance()->getCurrentStationIndex();
+		it = rls_prefs.find(d2);
+		if (it!=rls_prefs.end())
+			return rls_prefs[d2];
+		else
+		{
+			int found = 0;
+			string rls_pfx = "";
+			for (int i=0;i!=NearStationsSingleton::getInstance()->altStationNames.size();i++)
+			{
+				it = rls_prefs.find(NearStationsSingleton::getInstance()->altStationNames[i]);
+				if (it!=rls_prefs.end())
+					return rls_prefs[NearStationsSingleton::getInstance()->altStationNames[i]];
+			}
+		}
+	}
+	return "undef";
 }
 
 void StructureMaker::loadRlsPrefixes()

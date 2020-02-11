@@ -29,16 +29,49 @@ int NearStationsSingleton::checkStationCat(string index)
 	std::ifstream t("station.cat");
 	if (t.is_open())
 	{
-		std::string str((std::istreambuf_iterator<char>(t)),
-						 std::istreambuf_iterator<char>());
-		if (str.find(index.c_str())!= std::string::npos)
+		//std::string str((std::istreambuf_iterator<char>(t)),
+		//				 std::istreambuf_iterator<char>());
+		std::string str = "";
+		while (!t.eof())
 		{
-			return 0;
+			std::getline(t,str);
+			if (str.find(index.c_str())!= std::string::npos)
+			{
+				SessionLogger::getInstance()->logData("Found station.cat entry for selected index:" + str);
+				mCurrentStationIndex = str.substr(1,5);
+				SessionLogger::getInstance()->logData("Actual index:" + mCurrentStationIndex);
+				string curData = "";
+				int cnt = 0;
+				for (int i=5;i!=str.length();i++)
+				{
+					curData=curData+str[i];
+					cnt++;
+					SessionLogger::getInstance()->logData(curData);
+					if (str[i]==' ')
+					{
+						curData="";
+						cnt=0;
+					}
+					if (str[i]=='.')
+					{
+						curData="";
+						cnt=0;
+					}					
+					if (cnt==5)
+					{
+						altStationNames.push_back(curData);
+						SessionLogger::getInstance()->logData("Alt station name: " + curData);
+						curData = "";
+						cnt = 0;
+					}
+				}
+				return 0; //No error
+			}
 		}
 	}
 	else
-		return 1;
-	return 1;
+		return 1; //Error
+	return 1; // Not found
 }
 
 int NearStationsSingleton::loadBaseFiles()
@@ -53,13 +86,36 @@ int NearStationsSingleton::loadBaseFiles()
 	{
 		while (std::getline(t,st_data))
 		{
-			if (st_data.find(mStationIndex.c_str())!= std::string::npos)
+			if (!found)
 			{
-#ifdef VERBOSE
-				cout<<"NSS: FOUND!"<<endl;
-#endif
-				found=1;
-				break;
+				if (st_data.find(mStationIndex.c_str())!= std::string::npos)
+				{
+	#ifdef VERBOSE
+					cout<<"NSS: FOUND!"<<endl;
+	#endif
+					found=1;
+					break;
+				}
+				if (st_data.find(mCurrentStationIndex.c_str())!= std::string::npos)
+				{
+	#ifdef VERBOSE
+					cout<<"NSS: FOUND!"<<endl;
+	#endif
+					found=1;
+					break;
+				}
+
+				for (int i=0;i!=altStationNames.size();i++)
+				{
+					if (st_data.find(altStationNames[i].c_str())!= std::string::npos)
+					{
+	#ifdef VERBOSE
+						cout<<"NSS: FOUND!"<<endl;
+	#endif
+						found=1;
+						break;
+					}
+				}
 			}
 		}
 	}
@@ -76,13 +132,32 @@ int NearStationsSingleton::loadBaseFiles()
 	
 	if (t1.is_open())
 	{
-		while (std::getline(t1,st_link))
+		while (std::getline(t1,st_link)&&(!found))
 		{
-			if ((st_link.find(mStationIndex.c_str())!= std::string::npos)&&
-				(st_link.find(";")>st_link.find(mStationIndex.c_str())))
+			if (!found)
 			{
-				found=1;
-				break;
+				if ((st_link.find(mStationIndex.c_str())!= std::string::npos)&&
+					(st_link.find(";")>st_link.find(mStationIndex.c_str())))
+				{
+					found=1;
+					break;
+				}
+				if ((st_link.find(mCurrentStationIndex.c_str())!= std::string::npos)&&
+					(st_link.find(";")>st_link.find(mStationIndex.c_str())))
+				{
+					found=1;
+					break;
+				}
+
+				for (int i=0;i!=altStationNames.size();i++)
+				{
+					if ((st_link.find(altStationNames[i].c_str())!= std::string::npos)&&
+					(st_link.find(";")>st_link.find(altStationNames[i].c_str())))
+					{
+						found=1;
+						break;
+					}
+				}
 			}
 		}
 	}

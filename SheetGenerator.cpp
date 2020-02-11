@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "SheetGenerator.h"
+#include "SessionLogger.h"
 #include "NearStationsSingleton.h"
 
 string months_ru[12] = {"Январь", "Февраль", "Март", "Апрель",
@@ -9,6 +10,13 @@ string months_ru[12] = {"Январь", "Февраль", "Март", "Апрель",
 SheetGenerator::SheetGenerator()
 {
 	mMonthSpan = 0;
+}
+
+std::string SheetGenerator::generateAHRefForMonth(std::string month, std::string year)
+{
+	std::string result = "../../";
+	result += year + "/" + month + "/geop" + month + year.substr(year.size()-2,2) + ".htm";
+	return result;
 }
 
 void SheetGenerator::loadTemplate(std::string templateDir)
@@ -76,6 +84,7 @@ void SheetGenerator::loadTemplate(std::string templateDir)
 
 void SheetGenerator::processHeader()
 {
+	SessionLogger::getInstance()->logData("SheetGenerator: processing header: " + mYear + " " + mMonth + " " + IntToStr2(mMonthSpan));
 	string prefix = mStation_index;
 	size_t index = mHead.find("STATION_INDEX");
 	while (index != std::string::npos) {
@@ -110,7 +119,12 @@ void SheetGenerator::processHeader()
 	}
 
 	string month_num = calcCurrentMonthNameRU(mMonthSpan,atoi(mMonth.c_str()),atoi(mYear.c_str()));
-	prefix = month_num;
+	
+	string mCalcMonth = extendMonthByCntV2(mCnt-mMonthSpan-1,atoi(mMonth.c_str()),atoi(mYear.c_str()));
+	string mCalcYear = extendYearByCntV2(mCnt-mMonthSpan-1,atoi(mMonth.c_str()),atoi(mYear.c_str()));
+	
+	prefix = "<a href=\"" + generateAHRefForMonth(mCalcMonth,mCalcYear) + "\" target=\"_parent\"><span style=\"color:#C00000;font-size:12.0pt;font-weight:700\">" + month_num +"</span></a>";
+	SessionLogger::getInstance()->logData("SheetGenerator: header link:" + prefix);
 	index = mHead.find("MONTH_TEXT_RU");
 	while (index != std::string::npos) {
 		 /* Make the replacement. */
@@ -132,6 +146,33 @@ std::string SheetGenerator::calcCurrentMonthNameRU(int cnt,int month,int year)
 	mf-=1;
 	if ((mf>=0) && (mf<12))
 		return months_ru[mf];
+	return "";
+}
+
+std::string SheetGenerator::extendYearByCnt(int cnt,int month,int year)
+{
+	int months = year*12+month;
+	months-=(mCnt-cnt-1);
+	int mf = months%12;
+	stringstream ss;
+	ss<<months/12;
+	return ss.str();
+}
+
+std::string SheetGenerator::extendMonthByCnt(int cnt,int month,int year)
+{
+	int months = year*12+month;
+	months-=(mCnt-cnt-1);
+	int mf = months%12;
+	if (!mf)
+		mf=12;
+	mf-=1;
+	if ((mf>=0) && (mf<12))
+	{
+		stringstream ss;
+		ss<<mf;
+		return ss.str();
+	}
 	return "";
 }
 

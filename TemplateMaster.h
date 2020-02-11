@@ -18,6 +18,10 @@ public:
 	void loadTemplates();
 	void setMainHTMLData(string year, string month,string station_index, string count);
 	void setData(string year, string month,string station_index, string count);
+	void setActualStationIndex(string act_index)
+	{
+		mCurrentStationIndex = act_index;
+	}
 	void processData();
 	std::string returnMainHTMLResult();
 	std::string returnTabStripResult();
@@ -34,6 +38,7 @@ public:
 	void setFields();
 private:
 	string template_name;
+	string mCurrentStationIndex;
 	unsigned int mCount;
 	bool is_ok;
 	string mHtmlReport;

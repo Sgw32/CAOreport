@@ -44,6 +44,8 @@ int _tmain(int argc, _TCHAR* argv[])
 			system("pause");
 			return 1;
 		}
+
+		string actIndex = NearStationsSingleton::getInstance()->getCurrentStationIndex();
 		
 		SessionLogger::getInstance()->logData("AHREF data check passed!");
 
@@ -52,11 +54,11 @@ int _tmain(int argc, _TCHAR* argv[])
 		StructureMaker* sm = new StructureMaker();
 		sm->loadRlsPrefixes();
 		SessionLogger::getInstance()->logData("RLS prefixes loaded.");
-		tm->setData(year,month,station_index,length);
+		tm->setData("","","",length);
 		tm->loadTemplates();
 		SessionLogger::getInstance()->logData("Templates loaded.");
 		//Length - start from (month-length) to (month)
-		
+		tm->setActualStationIndex(actIndex);
 		tm->setMainHTMLData(year,month,station_index,length);
 		SessionLogger::getInstance()->logData("Main HTML file data set ok.");
 		tm->processData();

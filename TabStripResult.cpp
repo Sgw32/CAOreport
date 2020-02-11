@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "TabStripResult.h"
+#include "SessionLogger.h"
 
 TabStripResult::TabStripResult()
 {
@@ -46,6 +47,7 @@ void TabStripResult::process()
 		sprintf_s(mth,"%03d",i);
 		string res2 = extendDateByCntV2(mCnt-(i),atoi(mMonth.c_str()),atoi(mYear.c_str()));
 		mHead += string(mth)+".htm\" target=\"frSheet\"><font face=\"Arial\" color=\"#000000\">"+res2+"</font></a>&nbsp;</small></small></b></td>\n";
+		SessionLogger::getInstance()->logData("Processing TabStripResult:" + res2);
 	}
 }
 
